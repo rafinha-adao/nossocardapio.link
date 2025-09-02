@@ -14,11 +14,11 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 </head>
 
-<body class="<?= url_is('painel/entrar') || url_is('painel/esqueci-minha-senha*') ? 'bg-dark' : 'bg-white' ?>">
+<body class="<?= url_is('painel/entrar') || url_is('painel/esqueci-minha-senha*') ? 'bg-light' : 'bg-white' ?>">
     <?php if (url_is('painel/entrar') || url_is('painel/esqueci-minha-senha*')) : ?>
         <?= $this->renderSection('content') ?>
     <?php else : ?>
-        <header class="border-bottom px-3 py-2 bg-dark text-bg-dark">
+        <header class="border-bottom px-3 py-2 bg-light text-bg-light">
             <nav class="d-flex justify-content-between align-items-center">
                 <a class="navbar-brand fw-semibold" href="<?= base_url('painel') ?>">
                     Nosso Cardápio
@@ -26,7 +26,7 @@
                 <form action="<?= base_url('painel/sair') ?>" method="POST" onsubmit="return confirm('Deseja mesmo sair do painel?')">
                     <?= csrf_field() ?>
                     <input type="hidden" name="_method" value="DELETE">
-                    <button type="submit" class="btn btn-dark" data-bs-toggle="tooltip" data-bs-title="Sair do painel">
+                    <button type="submit" class="btn btn-light" data-bs-toggle="tooltip" data-bs-title="Sair do painel">
                         <i class="bi bi-box-arrow-in-right fs-4"></i>
                     </button>
                 </form>

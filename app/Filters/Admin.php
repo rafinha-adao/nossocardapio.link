@@ -28,7 +28,7 @@ class Admin implements FilterInterface
         if (!session()->has('admin_user')) {
             session()->set('admin_intended_uri', uri_string());
 
-            return redirect()->to('administracao/entrar');
+            return redirect()->to('administrador/entrar');
         }
     }
 

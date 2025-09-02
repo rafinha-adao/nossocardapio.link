@@ -4,7 +4,7 @@
 <main class="container-fluid d-flex flex-column align-items-center justify-content-center min-vh-100 h-100">
     <div class="card p-4 col-md-6 col-lg-4 col-12 w-100" style="max-width: 500px;">
         <h1 class="h2 mb-3"><?= $title ?></h1>
-        <form action="<?= base_url('administracao/entrar') ?>" method="POST">
+        <form action="<?= base_url('administrador/entrar') ?>" method="POST">
             <?= csrf_field() ?>
             <?php if (session()->has('error')) : ?>
                 <div class="alert alert-danger fade show" role="alert">

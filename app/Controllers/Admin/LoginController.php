@@ -10,7 +10,7 @@ class LoginController extends BaseController
     public function index()
     {
         return view('admin/pages/login/index', [
-            'title' => 'Entrar na administração'
+            'title' => 'Entrar no administrador'
         ]);
     }
 
@@ -45,13 +45,13 @@ class LoginController extends BaseController
 
         session()->set('admin_user', $encrypter->encrypt($data['password']));
 
-        return redirect()->to(session('admin_intended_uri') ?? 'administracao');
+        return redirect()->to(session('admin_intended_uri') ?? 'administrador');
     }
 
     public function destroy()
     {
         session()->remove('admin_user');
 
-        return redirect()->to('administracao/entrar');
+        return redirect()->to('administrador/entrar');
     }
 }

@@ -8,6 +8,6 @@ class AdminController extends BaseController
 {
     public function index()
     {
-        return redirect()->to('administracao/estabelecimentos/adicionar');
+        return redirect()->to('administrador/estabelecimentos/adicionar');
     }
 }

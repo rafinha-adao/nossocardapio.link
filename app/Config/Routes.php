@@ -44,12 +44,12 @@ $routes->group('painel', ['filter' => 'panel'], static function ($routes) {
     $routes->delete('sair', [PanelLoginController::class, 'destroy']);
 });
 
-$routes->group('administracao', ['filter' => 'reverseadmin'], static function ($routes) {
+$routes->group('administrador', ['filter' => 'reverseadmin'], static function ($routes) {
     $routes->get('entrar', [AdminLoginController::class, 'index']);
     $routes->post('entrar', [AdminLoginController::class, 'store']);
 });
 
-$routes->group('administracao', ['filter' => 'admin'], static function ($routes) {
+$routes->group('administrador', ['filter' => 'admin'], static function ($routes) {
     $routes->get('/', [AdminController::class, 'index']);
 
     $routes->get('estabelecimentos/adicionar', [AdminEstablishmentController::class, 'create']);

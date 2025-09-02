@@ -26,7 +26,7 @@ class ReverseAdmin implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         if (session()->has('admin_user')) {
-            return redirect()->to('administracao');
+            return redirect()->to('administrador');
         }
     }
 

@@ -1,7 +1,7 @@
 <?= $this->extend('admin/layout') ?>
 
 <?= $this->section('content') ?>
-<form action="<?= base_url('administracao/estabelecimentos/adicionar') ?>" method="POST" enctype="multipart/form-data">
+<form action="<?= base_url('administrador/estabelecimentos/adicionar') ?>" method="POST" enctype="multipart/form-data">
     <?= csrf_field() ?>
     <div class="mb-3">
         <label for="inputEstablishmentName" class="form-label">
@@ -53,7 +53,7 @@
         <div class="invalid-feedback"><?= session('errors')['file'] ?? '' ?></div>
     </div>
     <div class="d-flex gap-2">
-        <a class="btn btn-light border btn-lg w-100 d-none" href="<?= base_url('administracao/estabelecimentos') ?>" role="button">
+        <a class="btn btn-light border btn-lg w-100 d-none" href="<?= base_url('administrador/estabelecimentos') ?>" role="button">
             Voltar
         </a>
         <button type="submit" class="btn btn-dark btn-lg w-100">

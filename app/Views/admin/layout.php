@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title ?> | Administração</title>
+    <title><?= $title ?> | Administrador</title>
     <link rel="shortcut icon" href="<?= base_url('favicon.ico') ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,19 +14,19 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 </head>
 
-<body class="<?= url_is('administracao/entrar') ? 'bg-dark' : 'bg-white' ?>">
-    <?php if (url_is('administracao/entrar')) : ?>
+<body class="<?= url_is('administrador/entrar') ? 'bg-dark' : 'bg-white' ?>">
+    <?php if (url_is('administrador/entrar')) : ?>
         <?= $this->renderSection('content') ?>
     <?php else : ?>
         <header class="border-bottom px-3 py-2 bg-dark text-bg-dark">
             <nav class="d-flex justify-content-between align-items-center">
-                <a class="navbar-brand fw-semibold" href="<?= base_url('administracao') ?>">
-                    Administração
+                <a class="navbar-brand fw-semibold" href="<?= base_url('administrador') ?>">
+                    Administrador
                 </a>
-                <form action="<?= base_url('administracao/sair') ?>" method="POST" onsubmit="return confirm('Deseja mesmo sair da administração?')">
+                <form action="<?= base_url('administrador/sair') ?>" method="POST" onsubmit="return confirm('Deseja mesmo sair do administrador?')">
                     <?= csrf_field() ?>
                     <input type="hidden" name="_method" value="DELETE">
-                    <button type="submit" class="btn btn-dark" data-bs-toggle="tooltip" data-bs-title="Sair da administração">
+                    <button type="submit" class="btn btn-dark" data-bs-toggle="tooltip" data-bs-title="Sair do administrador">
                         <i class="bi bi-box-arrow-in-right fs-4"></i>
                     </button>
                 </form>
