@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteRule ^(builds|spark|composer\.(json|lock)|env) - [F,L]
+
+    RewriteRule ^(writable|logs|tests|vendor|\.git) - [F,L]
+
+    <FilesMatch "^(builds|spark|\.env|composer\.(json|lock))$">
+        Order Allow,Deny
+        Deny from all
+    </FilesMatch>
+
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ /public/$1 [L]
+
+    DirectoryIndex /public/index.php
+</IfModule>
