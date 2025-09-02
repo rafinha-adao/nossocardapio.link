@@ -26,7 +26,7 @@ class ReversePanel implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         if (session()->has('user')) {
-            return redirect()->to('/');
+            return redirect()->to('painel');
         }
     }
 

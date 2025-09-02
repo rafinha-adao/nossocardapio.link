@@ -2,7 +2,9 @@
 
 namespace Config;
 
+use App\Filters\Admin;
 use App\Filters\Panel;
+use App\Filters\ReverseAdmin;
 use App\Filters\ReversePanel;
 use CodeIgniter\Config\Filters as BaseFilters;
 use CodeIgniter\Filters\Cors;
@@ -37,7 +39,9 @@ class Filters extends BaseFilters
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
         'panel'         => Panel::class,
-        'reversepanel'  => ReversePanel::class
+        'reversepanel'  => ReversePanel::class,
+        'admin'         => Admin::class,
+        'reverseadmin'  => ReverseAdmin::class
     ];
 
     /**
@@ -74,7 +78,11 @@ class Filters extends BaseFilters
     public array $globals = [
         'before' => [
             // 'honeypot',
-            'csrf',
+            'csrf' => [
+                'except' => [
+                    'painel/gerar-pdf'
+                ]
+            ],
             // 'invalidchars',
         ],
         'after' => [

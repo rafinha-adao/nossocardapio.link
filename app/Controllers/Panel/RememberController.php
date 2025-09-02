@@ -69,7 +69,7 @@ class RememberController extends BaseController
         $user = $this->user_model->select('remember_token')->where('remember_token', $remember_token)->first();
 
         if (!$user) {
-            return redirect()->to('esqueci-minha-senha/')->with('error', 'Token expirado');
+            return redirect()->to('painel/esqueci-minha-senha/')->with('error', 'Token expirado');
         }
 
         return view('panel/pages/remember/edit', [
@@ -122,6 +122,6 @@ class RememberController extends BaseController
 
         session()->set('user', $user);
 
-        return redirect()->to('/')->with('success', 'Senha alterada com sucesso!');
+        return redirect()->to('painel')->with('success', 'Senha alterada com sucesso!');
     }
 }

@@ -45,13 +45,17 @@ class LoginController extends BaseController
         }
 
         $data = $this->request->getPost();
+
         $user = $this->user_model
-            ->select('users.uuid, users.name, users.email, users.password, users.image_path, users.active, establishments.id as establishment_id, establishments.name as establishment_name, establishments.active as establishment_active')
+            ->select('users.uuid, users.name, users.email, users.password, users.active, establishments.id as establishment_id, establishments.uuid as establishment_uuid, establishments.name as establishment_name, establishments.slug as establishment_slug, establishments.active as establishment_active, establishments.created_at as establishment_created_at, menus.id as menu_id, menus.uuid as menu_uuid')
             ->join('establishments', 'establishments.id = users.establishment_id')
+            ->join('menus', 'menus.establishment_id = users.establishment_id')
             ->where('users.email', $data['email'])
+            ->where('users.active', 1)
+            ->where('establishments.active', 1)
             ->first();
 
-        if (!$user || !$user['active'] || !password_verify($data['password'], $user['password']) || !$user['establishment_active']) {
+        if (!$user || !password_verify($data['password'], $user['password'])) {
             return redirect()->back()->with('error', 'E-mail e/ou senha inválidos.');
         }
 
@@ -59,13 +63,13 @@ class LoginController extends BaseController
 
         session()->set('user', $user);
 
-        return redirect()->to(session('intended_uri') ?? '/');
+        return redirect()->to(session('intended_uri') ?? 'painel');
     }
 
     public function destroy()
     {
-        session()->destroy();
+        session()->remove('user');
 
-        return redirect()->to('entrar');
+        return redirect()->to('painel/entrar');
     }
 }

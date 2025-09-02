@@ -1,7 +1,15 @@
 <?php
 
+use App\Controllers\Admin\AdminController;
+use App\Controllers\Admin\EstablishmentController as AdminEstablishmentController;
+use App\Controllers\Admin\LoginController as AdminLoginController;
+use App\Controllers\EstablishmentController;
+use App\Controllers\Panel\EstablishmentController as PanelEstablishmentController;
+use App\Controllers\Panel\GeneratePdfController as PanelGeneratePdfController;
+use App\Controllers\Panel\GenerateQRcodeController as PanelGenerateQRcodeController;
 use App\Controllers\Panel\LoginController as PanelLoginController;
 use App\Controllers\Panel\MenuController as PanelMenuController;
+use App\Controllers\Panel\PanelController;
 use App\Controllers\Panel\RememberController as PanelRememberController;
 use CodeIgniter\Router\RouteCollection;
 
@@ -20,16 +28,34 @@ $routes->group('painel', ['filter' => 'reversepanel'], static function ($routes)
 });
 
 $routes->group('painel', ['filter' => 'panel'], static function ($routes) {
-    $routes->get('cardapios', [PanelMenuController::class, 'index']);
-    $routes->get('cardapios/adicionar', [PanelMenuController::class, 'create']);
-    $routes->post('cardapios/adicionar', [PanelMenuController::class, 'store']);
+    $routes->get('/', [PanelController::class, 'index']);
+
+    $routes->get('cardapios/(:hash)', [PanelMenuController::class, 'show']);
     $routes->get('cardapios/(:hash)/editar', [PanelMenuController::class, 'edit']);
     $routes->put('cardapios/(:hash)/editar', [PanelMenuController::class, 'update']);
-    $routes->delete('cardapios/(:hash)/remover', [PanelMenuController::class, 'destroy']);
+
+    $routes->get('gerar-qrcode', [PanelGenerateQRcodeController::class, 'index']);
+
+    $routes->get('gerar-pdf', [PanelGeneratePdfController::class, 'index']);
+    $routes->post('gerar-pdf', [PanelGeneratePdfController::class, 'store']);
+
+    $routes->get('meu-estabelecimento', [PanelEstablishmentController::class, 'index']);
 
     $routes->delete('sair', [PanelLoginController::class, 'destroy']);
 });
 
-$routes->get('(:hash)', function () {
-    //
+$routes->group('administracao', ['filter' => 'reverseadmin'], static function ($routes) {
+    $routes->get('entrar', [AdminLoginController::class, 'index']);
+    $routes->post('entrar', [AdminLoginController::class, 'store']);
 });
+
+$routes->group('administracao', ['filter' => 'admin'], static function ($routes) {
+    $routes->get('/', [AdminController::class, 'index']);
+
+    $routes->get('estabelecimentos/adicionar', [AdminEstablishmentController::class, 'create']);
+    $routes->post('estabelecimentos/adicionar', [AdminEstablishmentController::class, 'store']);
+
+    $routes->delete('sair', [AdminLoginController::class, 'destroy']);
+});
+
+$routes->get('(:segment)', [EstablishmentController::class, 'show']);

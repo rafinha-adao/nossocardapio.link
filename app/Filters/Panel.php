@@ -28,7 +28,7 @@ class Panel implements FilterInterface
         if (!session()->has('user')) {
             session()->set('intended_uri', uri_string());
 
-            return redirect()->to('entrar');
+            return redirect()->to('painel/entrar');
         }
     }
 

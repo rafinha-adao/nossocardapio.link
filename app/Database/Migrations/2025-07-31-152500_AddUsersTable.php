@@ -25,7 +25,7 @@ class AddUsersTable extends Migration
             ],
             'name' => [
                 'type'           => 'VARCHAR',
-                'constraint'     => 150
+                'constraint'     => 100
             ],
             'email' => [
                 'type'           => 'VARCHAR',
@@ -49,7 +49,7 @@ class AddUsersTable extends Migration
             'active' => [
                 'type'           => 'TINYINT',
                 'constraint'     => 1,
-                'default'        => 0
+                'default'        => 1
             ],
             'created_at' => [
                 'type'           => 'DATETIME'

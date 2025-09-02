@@ -36,7 +36,7 @@ class AddEstablishmentsTable extends Migration
             'active' => [
                 'type'           => 'TINYINT',
                 'constraint'     => 1,
-                'default'        => 0
+                'default'        => 1
             ],
             'created_at' => [
                 'type'           => 'DATETIME'

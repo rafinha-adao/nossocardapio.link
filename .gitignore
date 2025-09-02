@@ -127,3 +127,7 @@ _modules/*
 
 # Node
 /node_modules
+
+# Menu files
+/public/files/*
+!/public/files/.gitkeep

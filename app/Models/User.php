@@ -14,12 +14,11 @@ class User extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'uuid',
-        'organization_id',
+        'establishment_id',
         'name',
         'email',
         'password',
-        'image_path',
-        'last_login',
+        'role',
         'remember_token',
         'active'
     ];
